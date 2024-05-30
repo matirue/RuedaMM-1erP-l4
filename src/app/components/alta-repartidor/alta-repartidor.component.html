@@ -1,0 +1,92 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">    
+            <app-lista-paises  (paisSeleccionadoEvent)="cambiarPais($event)"> </app-lista-paises>
+        </div>
+    
+        <div class="col-md-8 order-md-1">
+            <form  [formGroup]="formProducto"  novalidate (ngSubmit)="crearRepartidor()">
+                <div>                        
+                    <div class="row">
+                        <div class="col-md-12 mb-5">
+                            <h2>Alta Productos</h2>
+                        </div>
+                    </div>
+                    <div class="row formulario">    
+                        <div class="col-md-6 mb-3">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="number" class="form-control" id="dni" placeholder="Ingrese dni" formControlName="dni">
+                            <small class="invalid" *ngIf="formProducto.get('dni')?.errors?.required && formProducto.get('dni')?.touched">dni requerido</small>
+                            <small class="invalid" *ngIf="formProducto.get('dni')?.errors?.dniExistente && formProducto.get('dni')?.touched">El código ya existe</small>
+                            <small class="invalid" *ngIf="formProducto.get('dni')?.errors?.pattern && formProducto.get('dni')?.touched">El DNI debe tener exactamente 8 dígitos</small>
+                        </div>    
+
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+                            <small class="invalid" *ngIf="formProducto.get('nombre')?.errors?.required && formProducto.get('nombre')?.touched">nombre requerida</small> 
+                            <small class="invalid" *ngIf="formProducto.get('nombre')?.errors?.pattern && formProducto.get('nombre')?.touched">El nombre debe contener solo letras</small> 
+                        </div>
+    
+                        <div class="col-md-6 mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" placeholder="Ingrese edad" formControlName="edad">
+                            <small class="invalid" *ngIf="formProducto.get('edad')?.errors?.required && formProducto.get('edad')?.touched">edad requerido</small>
+                            <small class="invalid" *ngIf="formProducto.get('edad')?.errors?.pattern && formProducto.get('edad')?.touched">La edad debe ser un número</small>
+                            <small class="invalid" *ngIf="formProducto.get('edad')?.errors?.minAge && formProducto.get('edad')?.touched">Debe ser mayor o igual a 18</small>                                    
+                        </div>
+    
+                        <div class="col-md-6 mb-3">
+                            <label for="capacidad" class="form-label">Capacidad</label>
+                            <input type="number" class="form-control" id="capacidad" placeholder="Ingrese capacidad" formControlName = "capacidad">
+                            <small class="invalid" *ngIf="formProducto.get('capacidad')?.errors?.required && formProducto.get('capacidad')?.touched">capacidad requerido</small>   
+                            <small class="invalid" *ngIf="formProducto.get('capacidad')?.errors?.pattern && formProducto.get('capacidad')?.touched">La capacidad debe ser un número</small>
+                            <small class="invalid" *ngIf="formProducto.get('capacidad')?.errors?.minValue && formProducto.get('capacidad')?.touched">Debe ser mayor a 0</small>                                                 
+                        </div>
+    
+                        <div class="col-md-6 mb-3">
+                            <label for="pais" class="form-label">Pais de origen</label>
+                            <input type="text" class="form-control" id="paisOrigen" name="paisOrigen" placeholder="Ingrese el pais"  formControlName="paisOrigen">
+                            <small class="invalid" *ngIf="formProducto.get('paisOrigen')?.errors?.required && formProducto.get('paisOrigen')?.touched">pais requerido</small>                                    
+                        </div>
+    
+                        <div class="col-md-6 mb-3">
+                            <label for="unidad">Unidad</label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="unidad" id="optionsRadios1" value="si" checked="" formControlName="unidad">
+                                    Si
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="unidad" id="optionsRadios2" value="no" formControlName="unidad">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="!pais">
+                            <p> Seleccionar bandera: </p>
+                        </div>
+    
+                        <div class="card col-12" style="max-width: 280px; margin: auto;" *ngIf="pais">
+                            <br>
+                            <img [src]="pais.flag" class="card-img-top" style="border: 2px solid black;" alt="image pais" />
+                    
+                            <div class="card-body">
+                                <h4 class="card-title" >{{ pais.name }}</h4>   
+                            </div>   
+                        </div> 
+
+                        <div class="col-md-12 d-grid gap-2">
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

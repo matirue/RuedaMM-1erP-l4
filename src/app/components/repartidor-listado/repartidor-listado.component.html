@@ -1,0 +1,29 @@
+<table border=1 class="table table-hover table-red">
+    <thead>
+      
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Edad</th>
+      <th>Capacidad</th>
+      <th>Pais</th>
+      <th>Unidad</th>
+
+  
+      <th>
+        <div *ngIf="!tamanioLista">
+          <div class="spinner-border" role="status"></div>
+        </div>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let uno of listadoProductos"   (click)="mostrarDetalles(uno)">
+        <td>{{uno.dni}}</td>
+        <td>{{uno.nombre}}</td>
+        <td>{{uno.edad}}</td>
+        <td>{{uno.capacidad}}</td>
+        <td>{{uno.paisOrigen}}</td>
+        <td >{{uno.unidad}}</td>
+        <td> <i class="fa fa-check "></i></td>
+      </tr>
+    </tbody>
+</table>

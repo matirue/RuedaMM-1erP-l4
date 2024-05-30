@@ -1,0 +1,23 @@
+<div *ngIf="!unRep">
+    <p> Seleccione un producto </p>
+  </div>
+  
+  
+  <div *ngIf="unRep">
+
+    <div class="card  text-red" style="width:270px;">
+      <div class="card-body">
+        <h1>Repartidor</h1>
+        <h3 style="color: red;">{{unRep.nombre}} </h3>
+        <p class="card-text" style="color: red;">
+            Dni: <b>{{unRep.dni}}</b>
+            <br> 
+            Edad:  <b>{{unRep.edad}} </b>
+            <br>
+            Capacidad:  <b>{{unRep.capacidad}}</b>
+            <br> 
+            Unidad Propia:  <b>{{unRep.unidad}}</b>
+        </p> 
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<div *ngIf='detalleRep != null'>
+    <div class="container">
+  
+      <div>
+        <ul class="list-group-dark mb-3 card-body overflow-auto" style="height:auto;" #scrollMe [scrollTop]="scrollMe">
+  
+          <li type="text" class="list-group-item ">
+            <h3 style="color: black;">Info. del Pais</h3>
+            <div>
+              <h6>Nombre: {{detalleRep.paisOrigen}}</h6>  
+              <img [src]="detalleRep.paisOrigen.flag" width="60px" height="40px" /> 
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>

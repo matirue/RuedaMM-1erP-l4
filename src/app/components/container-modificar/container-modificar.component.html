@@ -1,0 +1,31 @@
+<div class=container>
+    
+    <div >
+        <label for="sabor" class="form-label">Sabor</label>
+        <input type="text" class="form-control" id="sabor" placeholder="modificar sabor" [(ngModel)]="containerModif.sabor" disabled >
+        
+    </div>
+
+
+    <div >
+        <label for="tipo" class="form-label">Tipo</label>
+        <input type="text" class="form-control" id="tipo" placeholder="modificar tipo" [(ngModel)]="containerModif.tipo" >
+        
+    </div>
+
+    <div >
+        <label for="precio" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="precio" placeholder="modificar precio" [(ngModel)]="containerModif.precio">
+        
+    </div>
+
+    <div >
+        <label for="peso" class="form-label">Peso</label>
+        <input type="number" class="form-control" id="peso" placeholder="modificar peso" [(ngModel)]="containerModif.peso">
+        
+    </div>
+
+    <br>
+    <button type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="modificarContainer()" >Modificar Container</button>
+
+</div>
