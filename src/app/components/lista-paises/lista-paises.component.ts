@@ -11,6 +11,8 @@ export class ListaPaisesComponent implements OnInit {
   public miPais: string = "";  
 
   public listaPaises: any[] = [];
+  public paisesAfrica: any[] = [];
+  public paisesEuropa: any[] = [];
 
   @Output() paisSeleccionadoEvent: EventEmitter<any> = new EventEmitter<any>();  
 
@@ -19,6 +21,9 @@ export class ListaPaisesComponent implements OnInit {
     this.paisesSvc.traerPaises().subscribe(
       (data: any) => {
         this.listaPaises = data;
+
+        this.paisesAfrica = this.listaPaises.filter(pais => pais.region === 'Africa').slice(0, 5); 
+        this.paisesEuropa = this.listaPaises.filter(pais => pais.region === 'Europe').slice(0, 5);
       },
       (error) => console.log(error)
     );
